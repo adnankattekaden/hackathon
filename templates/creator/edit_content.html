@@ -1,0 +1,178 @@
+{% extends 'creator/base.html' %}
+{% load static %}
+{% block content %}
+<div class="main-content" id="panel">
+  <!-- Header -->
+  <div class="header pb-6 d-flex align-items-center">
+    <!-- Header container -->
+    <div class="container-fluid d-flex align-items-center">
+      <div class="row">
+        <div class="col-lg-7 col-md-10">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Page content -->
+  <div class="container-fluid mt--6">
+    <div class="row">
+      <div class="col-xl-12 order-xl-1">
+        <div class="card">
+          <div class="card-header">
+            <div class="row align-items-center">
+              <div class="col-8">
+                <h3 class="mb-0">Edit Content</h3>
+              </div>
+            </div>
+          </div>
+          <span id="message"></span>
+          <div class="card-body">
+            <form method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              <span id="message" style="color: red"></span>
+              <h6 class="heading-small text-muted mb-4">Episode Options</h6>
+              <div class="pl-lg-4">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label">Episode Name</label>
+                      <input type="text" id="episode_name" name="episode_name" class="form-control"
+                        placeholder="Episode Name" value="{{content.episode_name}}" required />
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+
+                      <div class="form-group row align-items-center">
+                        <div class="col-md-12">
+                          <div class="profile-img-edit">
+                            <img class="profile-pic" src="{{content.ImageURL}}"
+                              alt="profile-pic">
+                            <div class="img-add">
+                              <input type="file" accept="image/*" id="file">
+                              <button type="button" class="btn btn-primary" id="img-button" ><span class="iconify" data-icon="uil-camera-plus" data-inline="false"></span></button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- <label class="form-control-label">Image Art</label> -->
+                      <!-- button for adding img -->
+                      <!-- <div class="input-group form-group">
+                        <button type="button" class="btn btn-primary" id="img-button">
+                          Add img
+                        </button>
+                      </div> -->
+
+                      <!-- result of cropped img -->
+                      <img id="cropped" class="cropped" src="" />
+
+                      <!-- hidden field -->
+                      <input class="d-none" accept="image/*" type="file" id="file-input" />
+                      <textarea name="pro_img" class="d-none" id="imageBaseData"></textarea>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-6">
+                    <h6 class="heading-small text-muted mb-4">Description</h6>
+                    <div class="form-group">
+                      <textarea name="description" id="description" cols="50" rows="6"
+                        required>{{content.description}}</textarea>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-first-name">File</label>
+                      <input type="file" id="audiofile" accept="audio/*" name="audio" class="form-control" required />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <button id="publishBtn" type="submit">update</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Crop Image</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="box-2">
+          <div class="result"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" id="load" class="btn save btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/0.8.1/cropper.min.js"></script>
+<script>
+
+  $("#img-button").click(function (e) {
+    $("#file-input").click();
+  });
+
+  let result = document.querySelector('.result'),
+    save = document.querySelector('.save'),
+    cropped = document.querySelector('.cropped'),
+    upload = document.querySelector('#file-input'),
+    cropper = '';
+
+  upload.addEventListener('change', (e) => {
+    if (e.target.files.length) {
+      // start file reader
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        if (e.target.result) {
+          // create new image
+          $("#exampleModalCenter").modal("show");
+          let img = document.createElement('img');
+          img.id = 'image';
+          img.src = e.target.result
+          // clean result before
+          result.innerHTML = '';
+          // append new image
+          result.appendChild(img);
+          // init cropper
+          cropper = new Cropper(img);
+        }
+      };
+      reader.readAsDataURL(e.target.files[0]);
+    }
+  });
+
+  save.addEventListener('click', (e) => {
+    e.preventDefault();
+    // get result to data uri
+    let imgSrc = cropper.getCroppedCanvas({
+      width: 300 // img disp value
+    }).toDataURL();
+    $("#exampleModalCenter").modal("hide");
+    cropped.src = imgSrc;
+    $('#imageBaseData').val(imgSrc)
+  });
+
+</script>
+{% endblock content %}

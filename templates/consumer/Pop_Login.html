@@ -1,0 +1,144 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+   
+<head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>Muzik - Responsive Bootstrap 4 Admin Dashboard Template</title>
+      <!-- Favicon -->
+      <link rel="shortcut icon" href="{% static './consumer/images/favicon.ico' %}" />
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="{% static './consumer/css/bootstrap.min.css' %}">
+      <!-- Typography CSS -->
+      <link rel="stylesheet" href="{% static './consumer/css/typography.css' %}">
+      <!-- Style CSS -->
+      <link rel="stylesheet" href="{% static './consumer/css/style.css' %}">
+      <!-- Responsive CSS -->
+      <link rel="stylesheet" href="{% static './consumer/css/responsive.css' %}">
+
+      <link rel="stylesheet" href="{% static './creator/vendor/@fortawesome/fontawesome-free/css/all.min.css' %}" type="text/css">
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+   </head>
+
+   <body>
+
+    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-body">
+            <div class="row justify-content-center align-items-center height-self-center sign-in-page">
+                <div class="col-md-6 col-sm-12 col-12 align-self-center">
+                   <div class="sign-user_card ">
+                      <div class="d-flex justify-content-center">
+                         <div class="sign-user_logo">
+                            <img src="{% static './consumer/images/login/user.png' %}" class=" img-fluid" alt="Logo">
+                         </div>
+                      </div>
+                      <div class="sign-in-page-data">
+                         <div class="sign-in-from w-100 pt-5 m-auto">
+                            <h1 class="mb-3 text-center">Sign in</h1>
+                            <div class="text-center text-muted mb-4">
+                               <span style="color: red;" id="message"></span><br>
+                            </div>
+                            <div>
+                               <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+                                  <li class="nav-item">
+                                    <a class="nav-link nav-link-icon" href="{% url 'social:begin' 'facebook' %}" data-toggle="tooltip" data-original-title="Like us on Facebook">
+                                      <i class="fab fa-facebook-square"></i>
+                                      <span class="nav-link-inner--text d-lg-none">Facebook</span>
+                                    </a>
+                                  </li>
+                                  <li class="nav-item">
+                                     <a class="nav-link nav-link-icon" href="{% url 'social:begin' 'google-oauth2' %}" data-toggle="tooltip" data-original-title="Like us on Facebook">
+                                        <i class="fab fa-google"></i>
+                                       <span class="nav-link-inner--text d-lg-none">Facebook</span>
+                                     </a>
+                                   </li>
+                                </ul>
+                            </div>
+                            <form class="mt-4">
+                               <div class="form-group">
+                                  <label for="exampleInputEmail2">UserName</label>
+                                  <input type="text" class="form-control mb-0" id="username" name="username" placeholder="UserName" >
+                               </div>
+                               <div class="form-group">
+                                  <label for="exampleInputPassword2">Password</label>
+                                  <input type="password" class="form-control mb-0" id="password" name="password" placeholder="Password" >
+                               </div>
+                               <div class="sign-info">
+                                  <button type="button" id="signin_Btn" class="btn btn-primary mb-2">Sign in</button>
+                                  <span class="dark-color d-block line-height-2">Don't have an account? <a href="{% url 'consumer_register' %}">Sign up</a></span>
+                               </div>
+                            </form>
+                         </div>
+                      </div>
+                      <div class="mt-2">
+                         <div class="d-flex justify-content-center links">
+                            Don't have an account? <a href="{% url 'consumer_register' %}" class="ml-2">Sign Up</a>
+                         </div>
+                         <div class="d-flex justify-content-center links">
+                            <a href="{% url 'consumer_forgot_password' %}">Forgot your password?</a>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+        </div>
+      </div>
+    </div>
+  </div>
+      <!-- Sign in Start -->
+
+            <!-- Sign in END -->
+
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="{% static './consumer/js/jquery.min.js' %}"></script>
+      <script src="{% static './consumer/js/popper.min.js' %}"></script>
+      <script src="{% static './consumer/js/bootstrap.min.js' %}"></script>
+
+
+<script>
+   $('#signin_Btn').click(function(){
+      var userData ={
+      csrfmiddlewaretoken:'{{csrf_token}}',
+      username:$('#username').val(),
+      password:$('#password').val(),
+   }
+   if(userData.username == ''){
+      $('#message').html('Enter Username')
+   }
+   else if(userData.password == ''){
+      $('#message').html('Enter Password')
+   }
+   else{
+      $.ajax({
+         url: '/login/',
+         type: 'POST',
+         data: userData,
+         dataType: 'JSON',
+         success: function(data){
+            if (data == 'success'){
+               window.location.replace('/')
+            }
+            else if(data == 'youarenotconsumer'){
+               $('#message').html('you are not an consumer')
+            }
+            else if(data == 'loginfailed'){
+               $('#message').html('Invalid Credentials')
+            }
+         }
+      })
+   }
+      })
+   </script>
+   </body>
+</html>

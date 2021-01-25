@@ -1,0 +1,343 @@
+
+  /*---------------------------------------------------------------------
+Profile Page
+-----------------------------------------------------------------------*/
+  .profile-img img {
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, .1);
+  }
+
+  .cover-container {
+    position: relative;
+  }
+
+  ul.header-nav {
+    position: absolute;
+    left: auto;
+    right: 0;
+    top: auto;
+    bottom: 20px;
+  }
+
+  ul.header-nav li {
+    list-style: none;
+  }
+
+  ul.header-nav li a {
+    display: block;
+    list-style: none;
+    height: 40px;
+    width: 40px;
+    background: var(--iq-white);
+    border-radius: 50%;
+    line-height: 40px;
+    text-align: center;
+    color: var(--iq-primary);
+    font-size: 18px;
+    margin: 0 15px 0 0;
+  }
+
+  .profile-img {
+    margin-top: -80px;
+  }
+
+  .profile-feed-items li {
+    list-style: none;
+  }
+
+  .profile-feed-items li:last-child a {
+    margin: 0;
+  }
+
+  .profile-feed-items li a.nav-link {
+    text-decoration: none;
+    text-transform: capitalize;
+    color: var(--iq-body-text);
+    text-align: center;
+  }
+
+  .nav-pills.profile-feed-items li a.active {
+    color: var(--iq-white);
+    background: var(--iq-primary);
+  }
+
+  .news-icon {
+    font-size: 18px;
+    margin-right: 20px;
+  }
+
+  ul.profile-img-gallary {
+    list-style: none;
+    margin: 0 -1px 0 -4px !important;
+  }
+
+  .twit-feed p span i {
+    background: var(--iq-primary);
+    color: var(--iq-white);
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    font-size: 10px;
+  }
+
+  .twit-feed .twit-meta-tag {
+    color: var(--iq-primary);
+  }
+
+  .twit-feed .media-support-user-img img {
+    height: 50px;
+  }
+
+  ul.media-story li>img,
+  ul.media-story li>i {
+    height: 60px;
+    width: 60px;
+    line-height: 60px;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, .1);
+    padding: 2px;
+    border-radius: 50%;
+  }
+
+  ul.media-story li.active img {
+    border-color: var(--iq-primary);
+  }
+
+  .add-suggestion {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 35px;
+    font-size: 16px;
+    color: var(--iq-primary);
+  }
+
+  .suggestions-lists .btn {
+    display: block;
+  }
+
+  .feather-icon a,
+  .message-icon a {
+    color: var(--iq-body-text);
+    font-weight: 300;
+  }
+
+  .feather-icon a:hover,
+  .message-icon a:hover {
+    color: var(--iq-primary);
+  }
+
+  ul.post-comments {
+    list-style: none;
+  }
+
+  .comment-activity>a {
+    margin-right: 10px;
+    text-transform: capitalize;
+    color: var(--iq-primary);
+    text-decoration: none;
+  }
+
+  form.comment-text {
+    position: relative;
+  }
+
+  form.comment-text input {
+    padding-right: 130px;
+  }
+
+  .comment-attagement {
+    position: absolute;
+    left: auto;
+    right: 0;
+    font-size: 20px;
+  }
+
+  .comment-attagement a {
+    color: var(--iq-body-text);
+  }
+
+  #profile-activity .iq-timeline li {
+    margin-bottom: 15px;
+  }
+
+  .about-info a,
+  div#profile-profile a {
+    color: var(--iq-body-text);
+  }
+
+  .twit-date a {
+    color: var(--iq-body-text);
+  }
+
+  /*---------------------------------------------------------------------
+Profile Edit 
+-----------------------------------------------------------------------*/
+  .profile-pic {
+    max-width: 100%;
+    display: block;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+  }
+
+  .profile-img-edit {
+    position: relative;
+    display: inline-block;
+    height: 150px;
+    width: 150px;
+  }
+
+  .file-upload {
+    display: none;
+  }
+
+  .p-image {
+    position: absolute;
+    top: auto;
+    right: 8px;
+    bottom: 10px;
+    transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+    background: var(--iq-primary);
+    color: var(--iq-white);
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    line-height: 28px;
+    text-align: center;
+    font-size: 12px;
+    cursor: pointer;
+  }
+
+  .upload-button {
+    font-size: 1.5em;
+  }
+
+  .iq-edit-profile .nav-link {
+    padding: 20px 15px;
+    border-radius: 0;
+    color: var(--iq-body-text);
+    text-align: center;
+    font-size: 16px;
+    border-left: 1px solid var(--iq-light-primary);
+  }
+
+  .iq-edit-profile.nav-pills .nav-link.active,
+  .iq-edit-profile.nav-pills .show>.nav-link {
+    color: var(--iq-white);
+    background: var(--iq-primary);
+  }
+
+  ul.iq-edit-profile li:first-child a {
+    border-radius: 15px 0 0 15px;
+    border-left: none;
+  }
+
+  ul.iq-edit-profile li:last-child a {
+    border-radius: 0 15px 15px 0;
+  }
+  
+  .user-dt {
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+.user-img {
+    position: relative;
+	display: inline-block;
+}
+
+.user-img img {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    border: 2px solid #fff;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.1);
+}
+
+.user-img .change-btn {
+    position: absolute;
+    bottom: 5px;
+    right: -5px;
+    background: #f55d2c;
+    color: #fff;
+    height: 35px;
+    width: 35px;
+    border-radius: 100%;
+	border: 1px solid #ffff;
+    font-size: 18px;
+    padding: 8px 5px;
+}
+
+.img-add {
+	display: block;
+}
+
+.img-add [type="file"] {
+	height: 0;
+	overflow: hidden;
+	width: 0;
+	float: left;
+}
+
+.img-add [type="file"] + label {
+	cursor: pointer;
+	display: inline-block;
+	outline: none;
+	transition: all 0.3s;
+	vertical-align: middle;
+	margin: 0;
+	position: absolute;
+    bottom: 5px;
+    right: -5px;
+    background: #f55d2c;
+    color: #fff;
+    height: 35px;
+    width: 35px;
+    border-radius: 100%;
+	border: 1px solid #ffff;
+    font-size: 18px;
+    padding: 8px 5px;
+}
+
+.img-add [type="file"] + label:hover {
+	background: #f55d2c;
+	color: #fff !important;
+	transition: all .2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+	background-image: -webkit-linear-gradient(left, rgba(230, 92, 91, 0.9), rgba(245, 93, 44, 0.9));
+    background-image: linear-gradient(to right, rgba(230, 92, 91, 0.9), rgba(245, 93, 44, 0.9));
+}
+
+.user-dt h4 {
+    font-size: 24px;
+    color: #2b2f4c;
+    text-align: center;
+    margin-bottom: 8px;
+    margin-top: 18px;
+}
+
+.user-dt p {
+    font-size: 14px;
+    color: #3e3f5e;
+    text-align: center;
+	margin-bottom: 20px;
+	font-weight: 500;
+	display: block;
+}
+
+.user-dt p a {
+	color: #3e3f5e !important;
+    font-size: 16px;
+	margin-left: 5px;
+}
+
+.user-dt p a:hover {
+    color: #f55d2c !important;
+}
+

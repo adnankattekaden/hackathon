@@ -1,0 +1,54 @@
+{% extends 'creator/base.html' %}
+{% load static %}
+{% block content %}
+  <div class="main-content" id="panel">
+    <!-- Header -->
+    <div class="header pb-6 d-flex align-items-center">
+      <!-- Mask -->
+      <span class="mask bg-gradient-default opacity-8"></span>
+      <!-- Header container -->
+      <div class="container-fluid d-flex align-items-center">
+        <div class="row">
+          <div class="col-lg-7 col-md-10">
+            <h1 class="display-2 text-white">Hello Jesse</h1>
+            <p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+      <div class="row d-flex justify-content-center">
+        <div class="col-xl-12 order-xl-6 ">
+          <div class="card card-profile">
+            <a href='/creator/edit_profile/{{request.user.id}}' class="mb-0 d-flex justify-content-end btn btn-sm btn-primary">Edit profile</a>
+            <div class="row justify-content-center">
+              <div class="col-lg-3 order-lg-2">
+                <div class="card-profile-image">
+                  <a href="#">
+                    <img src="{% static './creator/img/theme/team-4.jpg' %}" class="rounded-circle">
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+            </div>
+            <div class="card-body pt-5">
+              <div class="text-center">
+                <h5 class="h3">
+                  {{request.user.first_name}}
+                </h5>
+                <div class="h5 mt-2">
+                  <i class="ni business_briefcase-24 mr-2"></i>{{extra_details.role}}
+                </div>
+                <div>
+                  <i class="ni education_hat mr-2"></i>{{extra_details.about_me}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

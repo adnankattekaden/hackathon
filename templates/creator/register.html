@@ -1,0 +1,211 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+  <meta name="author" content="Creative Tim">
+  <title>Creator|Register</title>
+  <!-- Favicon -->
+  <link rel="icon" href="{% static './creator/img/brand/favicon.png' %}" type="image/png">
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+  <!-- Icons -->
+  <link rel="stylesheet" href="{% static './creator/vendor/nucleo/css/nucleo.css' %}" type="text/css">
+  <link rel="stylesheet" href="{% static './creator/vendor/@fortawesome/fontawesome-free/css/all.min.css' %}" type="text/css">
+  <!-- Argon CSS -->
+  <link rel="stylesheet" href="{% static './creator/css/argon.css' %}" type="text/css">
+</head>
+
+<body class="bg-default">
+  <!-- Navbar -->
+  <nav id="navbar-main" class="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="dashboard.html">
+        <img src="{% static './creator/img/brand/white.png' %}">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse navbar-custom-collapse collapse" id="navbar-collapse">
+        <div class="navbar-collapse-header">
+          <div class="row">
+            <div class="col-6 collapse-brand">
+              <a href="dashboard.html">
+                <img src="{% static './creator/img/brand/blue.png' %}">
+              </a>
+            </div>
+            <div class="col-6 collapse-close">
+              <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- Main content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header bg-gradient-primary py-7 py-lg-8 pt-lg-9">
+      <div class="container">
+        <div class="header-body text-center mb-7">
+          <div class="row justify-content-center">
+            <div class="col-xl-5 col-lg-6 col-md-8 px-5">
+              <h1 class="text-white">Create an account</h1>
+              <p class="text-lead text-white">Use these awesome forms to login or create new account in your project for free.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="separator separator-bottom separator-skew zindex-100">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+          <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="container mt--8 pb-5">
+      <!-- Table -->
+      <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+          <div class="card bg-secondary border-0">
+            <div class="card-body px-lg-5 py-lg-5">
+              <div class="text-center text-muted mb-4">
+                <span style="color: red;" id="message"></span><br>
+              </div>
+              <form role="form">
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                    </div>
+                    <input class="form-control" id="first_name" name="first_name" placeholder="Name" type="text" value="{{first_name}}">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                    </div>
+                    <input class="form-control" id="email" name="email" placeholder="Email" type="email" name="{{email}}">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                    </div>
+                    <input class="form-control" id="username" name="username" placeholder="Username" type="text" name="{{username}}">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                    </div>
+                    <input class="form-control" id="password" name="password" placeholder="Password" type="password">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                    </div>
+                    <input class="form-control" id="verifypassword" name="verifypassword" placeholder="verifypassword" type="password">
+                  </div>
+                </div>
+                <div class="text-muted font-italic"><small>password strength: <span class="text-success font-weight-700">strong</span></small></div>
+                <div class="text-center">
+                  <button id="signup_Btn" type="button" class="btn btn-primary mt-4">Create account</button><br> 
+                  <a href="{% url 'login_creator' %}" class="text-dark" ><small>Login</small></a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+  <footer class="py-5" id="footer-main">
+    <div class="container">
+      <div class="row align-items-center justify-content-xl-between">
+        <div class="col-xl-6">
+          <div class="copyright text-center text-xl-left text-muted">
+            &copy; 2020 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Blablabler</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Argon Scripts -->
+  <!-- Core -->
+  <script src="{% static './creator/vendor/jquery/dist/jquery.min.js' %}"></script>
+  <script src="{% static './creator/vendor/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static './creator/vendor/js-cookie/js.cookie.js' %}"></script>
+  <script src="{% static './creator/vendor/jquery.scrollbar/jquery.scrollbar.min.js' %}"></script>
+  <script src="{% static './creator/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js' %}"></script>
+  <!-- Argon JS -->
+  <script src="{% static './creator/js/argon.js' %}"></script>
+
+<script>
+  $('#signup_Btn').click(function(){
+    var userData = {
+    csrfmiddlewaretoken:'{{csrf_token}}', 
+    firstName:$('#first_name').val(),
+    email:$('#email').val(),
+    username:$('#username').val(),
+    password:$('#password').val(),
+    verifypassword:$('#verifypassword').val(),
+  }
+
+  if(userData.firstName === ''){
+    $('#message').html('Enter First Name')
+  }
+  else if(userData.email === ''){
+    $('#message').html('Enter Email Address')
+  }
+  else if(userData.username === ''){
+    $('#message').html('Enter Username')
+  }
+  else if(userData.password === ''){
+    $('#message').html('Enter password')
+  }
+  else if(userData.verifypassword === ''){
+    $('#message').html('Verify Your Password')
+  }
+else{
+  $.ajax({
+    url: '/creator/register_creator/',
+    type: 'POST',
+    data: userData,
+    dataType: 'JSON',
+    success: function(data){
+      if(data == 'invalidpassword'){
+        $('#message').html('Password Not Matching')
+        $('#password').val('')
+        $('#verifypassword').val('')
+      }
+      else if(data == 'emailtaken'){
+        $('#message').html('Email Address Is Taken')
+      }
+      else if(data == 'usernametaken'){
+        $('#message').html('UserName Is Taken')
+      }
+      else if(data == 'success'){
+        window.location.replace('/creator/logout_creator/')
+      }
+    }
+  })
+}
+  })
+</script>
+
+</body>
+
+</html>

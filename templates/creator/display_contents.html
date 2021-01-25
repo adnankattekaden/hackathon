@@ -1,0 +1,30 @@
+{% extends 'creator/base.html' %}
+{% load static %}
+{% block content %}
+
+<a href="{% url 'create_content' %}">Create</a><br>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Show Name</th>
+        <th scope="col">Date</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in content  %}
+      <tr>
+        <th scope="row">{{i.id}}</th>
+        <td>{{i.episode_name}}</td>
+        <td>{{i.description}}</td>
+        <td><a href="/creator/edit_content/{{i.id}}"><input type="button" class="btn btn-info"
+          value="edit"></a>&nbsp;&nbsp;<a href="/creator/delete_content/{{i.id}}"><input type="button"
+          class="btn btn-primary" onclick="return confirm('Are You Sure Want To Delete')" value="Delete"></td></a>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock content %}

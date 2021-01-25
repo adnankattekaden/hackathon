@@ -1,0 +1,82 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>Muzik - Responsive Bootstrap 4 Admin Dashboard Template</title>
+      <!-- Favicon -->
+      <link rel="shortcut icon" href="{% static './consumer/images/favicon.ico' %}" />
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="{% static './consumer/css/bootstrap.min.css' %}">
+      <!-- Typography CSS -->
+      <link rel="stylesheet" href="{% static './consumer/css/typography.css' %}">
+      <!-- Style CSS -->
+      <link rel="stylesheet" href="{% static './consumer/css/style.css' %}">
+      <!-- Responsive CSS -->
+      <link rel="stylesheet" href="{% static './consumer/css/responsive.css' %}">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+   </head>
+   <body>
+      <!-- Sign in Start -->
+      <!-- Sign in Start -->
+      <section class="sign-in-page">
+         <div class="container h-100">
+            <div class="row justify-content-center align-items-center h-100">
+               <div class="col-md-6 col-sm-12 col-12 ">
+                  <div class="sign-user_card ">
+                     <div class="sign-in-page-data">
+                        <div class="sign-in-from w-100 m-auto pt-5">
+                           <h4 class="mt-3 text-white mb-0 text-center">Verify Otp</h4>
+                           <div class="text-center text-muted mb-4">
+                              <span style="color: red;" id="message"></span><br>
+                           </div>
+                           <form class="mt-4">
+                              <div class="form-group">
+                                 <input type="number" class="form-control mb-0" id="otp" placeholder="Verify Otp">
+                              </div>
+                              <div class="d-inline-block w-100">
+                                 <button type="button" id="verify_otp_btn" class="btn btn-primary float-right">Verify Otp</button>
+                              </div>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <script>
+         $('#verify_otp_btn').click(function(){
+            var userData = {
+               csrfmiddlewaretoken:'{{csrf_token}}',
+               otp:$('#otp').val(),
+            }
+
+            if (userData.otp == ''){
+               $('#message').html('Enter Otp')
+            }
+            else{
+               $.ajax({
+                  url: '/verify_otp/',
+                  type: 'POST',
+                  data: userData,
+                  success: function(data){
+                     if(data == 'success'){
+                        window.location.replace('/')
+                     }
+                     else if( data == 'otpfail'){
+                        $('#message').html('Otp Verification Failed')
+                     }
+                  }
+               })
+            }
+
+         })
+      </script>
+
+   </body>
+
+</html>
